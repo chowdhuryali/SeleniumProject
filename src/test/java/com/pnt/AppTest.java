@@ -14,7 +14,7 @@ public class AppTest {
     WebDriver driver;
     @Before
     public void before(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\PeopleNTech NY Class\\IdeaProjects\\SeleniumProject1\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/alichowdhury/IdeaProjects/SeleniumProject/drivers/chromedriver");
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
