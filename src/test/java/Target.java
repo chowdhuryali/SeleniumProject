@@ -1,0 +1,42 @@
+package com.pnt;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
+
+public class Target {
+    WebDriver driver;
+    @Before
+    public void before(){
+        System.setProperty("webdriver.chrome.driver", "/Users/alichowdhury/IdeaProjects/SeleniumProject/drivers/chromedriver");
+
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://www.target.com/");
+        driver.manage().window().maximize();
+    }
+    @Test
+    public void test1() throws InterruptedException {
+        String title = driver.getTitle();
+        Assert.assertEquals("Success!!", "Target : Expect More. Pay Less.", title);
+    }
+    @Test
+    public void test2() throws InterruptedException {
+        driver.findElement(By.ByClassName("styles__PrimaryHeaderLink-sc-17dxxwu-3 styles__CartLink-sc-17dxxwu-11 fgAwNT iNRdrk")).click();
+    }
+    @Test
+    public void test3() throws InterruptedException {
+        driver.findElement(By.ByClassName("gstyles__SearchInput-sc-17dxxwu-6 dngSjW")).sendKeys("usa news");
+        driver.findElement(By.ByClassName("styles__SearchButton-sc-17dxxwu-15 kFAIHc")).click();
+    }
+    @After
+    public void after(){
+        driver.close();
+    }
+}
